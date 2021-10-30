@@ -10,12 +10,30 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node",
+"class": "GameConsts",
+"language": "GDScript",
+"path": "res://scripts/GameConsts.gd"
+}, {
+"base": "Node",
 "class": "LevelBuilder",
 "language": "GDScript",
-"path": "res://LevelBuilder.gd"
+"path": "res://scripts/LevelBuilder.gd"
+}, {
+"base": "Node",
+"class": "RoomAdder",
+"language": "GDScript",
+"path": "res://scripts/RoomAdder.gd"
+}, {
+"base": "Node",
+"class": "TileSetter",
+"language": "GDScript",
+"path": "res://scripts/TileSetter.gd"
 } ]
 _global_script_class_icons={
-"LevelBuilder": ""
+"GameConsts": "",
+"LevelBuilder": "",
+"RoomAdder": "",
+"TileSetter": ""
 }
 
 [application]

@@ -24,7 +24,3 @@ func _ready():
 	randomize()
 
 	levelBuilder.build_level(rooms, map, tile_map, level_size, level_num)
-
-
-
-
