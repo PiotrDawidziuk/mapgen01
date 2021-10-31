@@ -1,7 +1,7 @@
 extends Node2D
 
 #objects created from other classes
-var levelBuilder = LevelBuilder.new()
+var level_builder = LevelBuilder.new()
 
 #Current level
 var level_num = 0
@@ -23,4 +23,4 @@ func _ready():
 	OS.set_window_size(Vector2(1280,720))
 	randomize()
 
-	levelBuilder.build_level(rooms, map, tile_map, level_size, level_num)
+	level_builder.build_level(rooms, map, tile_map, level_size, level_num)
