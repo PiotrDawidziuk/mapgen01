@@ -19,9 +19,11 @@ func build_level(rooms, map, tile_map, level_size, level_num):
 			tile_map.set_cell(x,y,consts.Tile.Stone)
 			
 			
-			
+	# create a free region on the whole level, with 2 tile margin from the borders
 	var free_regions =[Rect2(Vector2(2,2), level_size - Vector2(4,4))]
+	# see how many rooms do we need on this particular level of our dungeon
 	var num_rooms = consts.LEVEL_ROOM_COUNTS[level_num]
+	# add rooms until there is no free regions or we created all the rooms we needed for this level
 	for i in range(num_rooms):
 		room_adder.add_room(free_regions, rooms, map, tile_map)
 		if free_regions.empty():
