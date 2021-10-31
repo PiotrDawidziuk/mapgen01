@@ -1,5 +1,3 @@
-extends Node
-
 class_name LevelBuilder
 
 var tile_setter = TileSetter.new()
@@ -28,6 +26,4 @@ func build_level(rooms, map, tile_map, level_size, level_num):
 		room_adder.add_room(free_regions, rooms, map, tile_map)
 		if free_regions.empty():
 			break
-
-
 

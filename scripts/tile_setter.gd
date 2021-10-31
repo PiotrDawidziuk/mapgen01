@@ -1,5 +1,3 @@
-extends Node
-
 class_name TileSetter
 
 func set_tile(x,y,type,map, tile_map):

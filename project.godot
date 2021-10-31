@@ -9,22 +9,22 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node",
+"base": "Reference",
 "class": "GameConsts",
 "language": "GDScript",
 "path": "res://scripts/game_consts.gd"
 }, {
-"base": "Node",
+"base": "Reference",
 "class": "LevelBuilder",
 "language": "GDScript",
 "path": "res://scripts/level_builder.gd"
 }, {
-"base": "Node",
+"base": "Reference",
 "class": "RoomAdder",
 "language": "GDScript",
 "path": "res://scripts/room_adder.gd"
 }, {
-"base": "Node",
+"base": "Reference",
 "class": "TileSetter",
 "language": "GDScript",
 "path": "res://scripts/tile_setter.gd"

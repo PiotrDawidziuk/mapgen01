@@ -1,5 +1,3 @@
-extends Node
-
 class_name GameConsts
 
 const LEVEL_SIZES = [
