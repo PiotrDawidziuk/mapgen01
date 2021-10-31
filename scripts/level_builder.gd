@@ -20,6 +20,7 @@ func build_level(rooms, map, tile_map, level_size, level_num):
 			
 			
 	# create a free region on the whole level, with 2 tile margin from the borders
+	# this table has one element now and this element is the whole level
 	var free_regions =[Rect2(Vector2(2,2), level_size - Vector2(4,4))]
 	# see how many rooms do we need on this particular level of our dungeon
 	var num_rooms = consts.LEVEL_ROOM_COUNTS[level_num]
