@@ -12,22 +12,22 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "GameConsts",
 "language": "GDScript",
-"path": "res://scripts/GameConsts.gd"
+"path": "res://scripts/game_consts.gd"
 }, {
 "base": "Node",
 "class": "LevelBuilder",
 "language": "GDScript",
-"path": "res://scripts/LevelBuilder.gd"
+"path": "res://scripts/level_builder.gd"
 }, {
 "base": "Node",
 "class": "RoomAdder",
 "language": "GDScript",
-"path": "res://scripts/RoomAdder.gd"
+"path": "res://scripts/room_adder.gd"
 }, {
 "base": "Node",
 "class": "TileSetter",
 "language": "GDScript",
-"path": "res://scripts/TileSetter.gd"
+"path": "res://scripts/tile_setter.gd"
 } ]
 _global_script_class_icons={
 "GameConsts": "",
@@ -39,7 +39,7 @@ _global_script_class_icons={
 [application]
 
 config/name="mapgen01"
-run/main_scene="res://Game.tscn"
+run/main_scene="res://game.tscn"
 config/icon="res://icon.png"
 
 [display]
