@@ -55,21 +55,30 @@ func add_room(free_regions, rooms, map, tile_map):
 			tile_setter.set_tile(x, y, consts.Tile.Floor, map,tile_map)
 			
 	cut_regions(free_regions, room)
-			
+
+#functions that deletes regions of the map from the free regions list, so you don't build rooms on top of each other. 			
 func cut_regions(free_regions, region_to_remove):
+	
+	# array of regions that are occupied by rooms, so they have to be removed from the list of free regions
 	var removal_queue = []
+	# regions added to the list (free parts of the regions that were removed)
 	var addition_queue = []
 	
+	# if a region in free regions interects the newly created room from regions to remove (both are Rect2), 
+	# delete it from the list
 	for region in free_regions:
 		if region.intersects(region_to_remove):
 			removal_queue.append(region)
 			
+			# check for the leftover space on all sides of the new room
 			var leftover_left = region_to_remove.position.x - region.position.x - 1
 			var leftover_right = region.end.x - region_to_remove.end.x - 1
 			var leftover_above = region_to_remove.position.y - region.position.y - 1
 			var leftover_below = region.end.y - region_to_remove.end.y - 1
 			
-		
+			#if there is leftover space on any side of the room, check if it's bigger than min room size 
+			# and add it to the free regions list
+			# regions can overlap
 			if leftover_left >= consts.MIN_ROOM_DIMENSION:
 				addition_queue.append(Rect2(region.position, Vector2(leftover_left, region.size.y)))
 			if leftover_right >= consts.MIN_ROOM_DIMENSION:
@@ -78,10 +87,12 @@ func cut_regions(free_regions, region_to_remove):
 				addition_queue.append(Rect2(region.position, Vector2(region.size.x, leftover_above)))
 			if leftover_below >= consts.MIN_ROOM_DIMENSION:
 				addition_queue.append(Rect2(Vector2(region.position.x, region_to_remove.end.y + 1), Vector2(region.size.x, leftover_below)))
-				
+	
+	# remove regions from free regions, if they are on removal queue			
 	for region in removal_queue:
 		free_regions.erase(region)
 		
+	# add regions to free regions if they are on the addition queue	
 	for region in addition_queue:
 		free_regions.append(region)
 		
