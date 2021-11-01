@@ -118,7 +118,7 @@ cell_size = Vector2( 32, 32 )
 format = 1
 
 [node name="Player" type="Sprite" parent="."]
-position = Vector2( 320, 192 )
+position = Vector2( 64, 64 )
 texture = ExtResource( 3 )
 centered = false
 script = ExtResource( 7 )

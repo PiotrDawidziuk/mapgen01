@@ -2,6 +2,7 @@ extends Node2D
 
 #objects created from other classes
 var level_builder = LevelBuilder.new()
+var consts = GameConsts.new()
 
 #Current level
 var level_num = 0
@@ -26,3 +27,10 @@ func _ready():
 	level_builder.build_level(rooms, map, tile_map, level_size, level_num)
 	
 	player_tile = get_node("Player").place_player(rooms)
+	
+	update_visuals()
+	
+
+func update_visuals():
+
+	player.position = player_tile * consts.TILE_SIZE

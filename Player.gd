@@ -19,3 +19,4 @@ func place_player(rooms):
 	var player_y = start_room.position.y + 1 + randi() % int(start_room.size.y -2)
 	var player_tile = Vector2(player_x, player_y)
 	return player_tile
+
