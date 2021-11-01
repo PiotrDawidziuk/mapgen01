@@ -25,6 +25,16 @@ _global_script_classes=[ {
 "path": "res://scripts/room_adder.gd"
 }, {
 "base": "Reference",
+"class": "RoomConnector",
+"language": "GDScript",
+"path": "res://scripts/room_connector.gd"
+}, {
+"base": "Reference",
+"class": "RoomSizeCreator",
+"language": "GDScript",
+"path": "res://scripts/room_size_creator.gd"
+}, {
+"base": "Reference",
 "class": "TileSetter",
 "language": "GDScript",
 "path": "res://scripts/tile_setter.gd"
@@ -33,6 +43,8 @@ _global_script_class_icons={
 "GameConsts": "",
 "LevelBuilder": "",
 "RoomAdder": "",
+"RoomConnector": "",
+"RoomSizeCreator": "",
 "TileSetter": ""
 }
 
@@ -47,6 +59,29 @@ config/icon="res://icon.png"
 window/size/width=640
 window/size/height=360
 window/stretch/mode="viewport"
+
+[input]
+
+Up={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"unicode":0,"echo":false,"script":null)
+ ]
+}
+Down={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"unicode":0,"echo":false,"script":null)
+ ]
+}
+Left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"unicode":0,"echo":false,"script":null)
+ ]
+}
+Right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [rendering]
 

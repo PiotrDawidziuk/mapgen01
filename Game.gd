@@ -24,3 +24,5 @@ func _ready():
 	randomize()
 
 	level_builder.build_level(rooms, map, tile_map, level_size, level_num)
+	
+	player_tile = get_node("Player").place_player(rooms)

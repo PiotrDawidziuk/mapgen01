@@ -3,6 +3,7 @@ class_name LevelBuilder
 var tile_setter = TileSetter.new()
 var room_adder = RoomAdder.new()
 var consts = GameConsts.new()
+var room_connector = RoomConnector.new()
 
 func build_level(rooms, map, tile_map, level_size, level_num):
 	# start with blank map
@@ -29,4 +30,5 @@ func build_level(rooms, map, tile_map, level_size, level_num):
 		room_adder.add_room(free_regions, rooms, map, tile_map)
 		if free_regions.empty():
 			break
-
+	
+	room_connector.connect_rooms(level_size, rooms, map, tile_map)

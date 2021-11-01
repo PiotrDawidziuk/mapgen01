@@ -2,27 +2,17 @@ class_name RoomAdder
 
 var consts = GameConsts.new()
 var tile_setter = TileSetter.new()
+var room_size_creator = RoomSizeCreator.new()
 
 func add_room(free_regions, rooms, map, tile_map):
 	
 	#Get random region from list of regions, if there are more than 1, or the only one if there is only 1
 	var region = free_regions[randi() % free_regions.size()]
-		
-	var size_x = consts.MIN_ROOM_DIMENSION 
-	
-	# if region is bigger than room minimal dimension, add random size x (but not more than the size x of the region)
-	if region.size.x > consts.MIN_ROOM_DIMENSION:
-		size_x += randi() % int(region.size.x - consts.MIN_ROOM_DIMENSION)
-	
-	# if region is bigger than room minimal dimension, add random size x (but not more than the size x of the region)
-	var size_y = consts.MIN_ROOM_DIMENSION
-	if region.size.y > consts.MIN_ROOM_DIMENSION:
-		size_y += randi() % int(region.size.y - consts.MIN_ROOM_DIMENSION)
-		
-	# Constrain the room dimensions to the maximum room dimension from project constants
-	size_x = min(size_x, consts.MAX_ROOM_DIMENSION)
-	size_y = min(size_y, consts.MAX_ROOM_DIMENSION)
-		
+
+	#fet size x and y for the room you create
+	var size_x = room_size_creator.get_size_x(region)
+	var size_y = room_size_creator.get_size_y(region)
+
 	# Set start x position for the room rect2D, then randomize if there is enough space
 	var start_x = region.position.x
 	if region.size.x > size_x:
@@ -95,4 +85,3 @@ func cut_regions(free_regions, region_to_remove):
 	# add regions to free regions if they are on the addition queue	
 	for region in addition_queue:
 		free_regions.append(region)
-		
