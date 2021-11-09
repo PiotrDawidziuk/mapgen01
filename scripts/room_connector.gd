@@ -44,6 +44,7 @@ func connect_rooms(level_size, rooms, map, tile_map):
 		
 # function that checks if all rooms are connected
 func is_everything_connected(graph):
+	# only needs to check from one point, because everything is supposed to be connected to everything else
 	var points = graph.get_points()
 	var start = points.pop_back()
 	for point in points:
@@ -75,6 +76,7 @@ func add_random_connection(stone_graph, room_graph, rooms, map, tile_map):
 	
 	path = Array(path)
 	
+	#set doors on start and end of a corridor 
 	tile_setter.set_tile(start_position.x, start_position.y, consts.Tile.Door, map, tile_map)
 	tile_setter.set_tile(end_position.x, end_position.y, consts.Tile.Door, map, tile_map)
 	
@@ -83,7 +85,7 @@ func add_random_connection(stone_graph, room_graph, rooms, map, tile_map):
 	
 	room_graph.connect_points(start_room_id, end_room_id)	
 
-
+# check with point has the least conections and if it's more than 1, get a random one of those 
 func get_least_connected_point(graph):
 	var point_ids = graph.get_points()
 	
@@ -100,6 +102,7 @@ func get_least_connected_point(graph):
 			
 	return tied_for_least[randi() % tied_for_least.size()]
 	
+# check for the nearest unconnected point and if it's more than 1, get a random one of those 
 func get_nearest_unconnected_point(graph, target_point):
 	var target_position = graph.get_point_position(target_point)
 	var point_ids = graph.get_points()
@@ -108,13 +111,16 @@ func get_nearest_unconnected_point(graph, target_point):
 	var tied_for_nearest = []
 	
 	for point in point_ids:
+		# do not connect the room to itself
 		if point == target_point:
 			continue
 		
+		# skip if there is already a path
 		var path = graph.get_point_path(point, target_point)
 		if path:
 			continue
 			
+		# from the points we have check which are the nearest or make a list of equaly near points 
 		var dist = (graph.get_point_position(point) - target_position).length()
 		if !nearest || dist < nearest:
 			nearest = dist
@@ -124,6 +130,7 @@ func get_nearest_unconnected_point(graph, target_point):
 			
 	return tied_for_nearest[randi() % tied_for_nearest.size()]
 
+#pick random place to add door
 func pick_random_door_location(room):
 	var options = []
 	
