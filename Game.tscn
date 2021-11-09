@@ -210,3 +210,23 @@ cell_size = Vector2( 16, 16 )
 cell_quadrant_size = 1
 cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
 format = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+margin_right = 640.0
+margin_bottom = 19.0
+color = Color( 0, 0, 0, 0.466667 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Level" type="Label" parent="CanvasLayer"]
+margin_left = 3.25
+margin_top = 3.0
+margin_right = 43.25
+margin_bottom = 17.0
+text = "Level:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
