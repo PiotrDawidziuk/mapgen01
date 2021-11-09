@@ -14,3 +14,4 @@ const MIN_ROOM_DIMENSION = 5
 const MAX_ROOM_DIMENSION = 8
 
 enum Tile {Floor, Wall, Player, Door, Stone}
+#enum Tile {Wall, Stone, Door, Floor, Player}

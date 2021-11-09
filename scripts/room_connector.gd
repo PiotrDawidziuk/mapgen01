@@ -5,7 +5,9 @@ var tile_setter = TileSetter.new()
 func connect_rooms(level_size, rooms, map, tile_map):
 	# Build an AStar graph of the area where we can add corridors
 	var stone_graph = AStar.new()
+	# id of a tile (stone tiles only in this case)
 	var point_id = 0
+	# add all the stone tiles to the graph, check to which tile each tile is connected
 	for x in range(level_size.x):
 		for y in range(level_size.y):
 			if map[x][y] == consts.Tile.Stone:
@@ -21,13 +23,14 @@ func connect_rooms(level_size, rooms, map, tile_map):
 					var above_point = stone_graph.get_closest_point(Vector3(x,y-1,0))
 					stone_graph.connect_points(point_id,above_point)	
 					
-					
+				#increment the point id so each point (tile) has a unique id
 				point_id +=1
 				
-	# build an AStar fraph of room connections
+	# build an AStar graph of room connections
 	
 	var room_graph = AStar.new()
 	point_id = 0
+	# add each room as a point in the graph and later we will see if there is a connection
 	for room in rooms:
 		var room_center = room.position + room.size / 2
 		room_graph.add_point(point_id,Vector3(room_center.x, room_center.y,0))			
@@ -36,9 +39,10 @@ func connect_rooms(level_size, rooms, map, tile_map):
 	# Add random connections until everyhthing is connected
 	
 	while !is_everything_connected(room_graph):
+		# if there are rooms that are not connected, add connections
 		add_random_connection(stone_graph, room_graph, rooms, map, tile_map)
 		
-		
+# function that checks if all rooms are connected
 func is_everything_connected(graph):
 	var points = graph.get_points()
 	var start = points.pop_back()
